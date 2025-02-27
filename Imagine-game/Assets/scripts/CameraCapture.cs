@@ -22,7 +22,7 @@ public class CameraCapture : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1)) // Left-click to take a picture
+        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1)) // Hold right click and press left click to take a picture
         {
             TakeScreenshot();
         }
