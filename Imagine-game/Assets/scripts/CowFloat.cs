@@ -1,43 +1,59 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CowFloat : MonoBehaviour
 {
-    public GameObject objectToMove; 
-    public Vector3 pointA; 
-    public Vector3 pointB; 
-    public float speed = 1.0f;
+    public GameObject objectToMove;
+    public float launchForce = 10.0f;
+    public PhysicsMaterial bouncyMaterial; // Assign in the Inspector
+    public float triggerDistance = 20.0f;
 
-    private Vector3 targetPosition;
-    private bool isMoving = false;
+    private bool hasLaunched = false;
+    private Rigidbody rb;
+    private GameObject player;
 
     void Start()
     {
         if (objectToMove != null)
         {
-            pointA += objectToMove.transform.position;
-            pointB += objectToMove.transform.position;
-            targetPosition = pointB;
+            rb = objectToMove.GetComponent<Rigidbody>();
+            rb.isKinematic = true; // Disable physics until launch
+            player = GameObject.FindGameObjectWithTag("Player"); // Find player by tag
         }
     }
 
     void Update()
     {
-        if (isMoving && objectToMove != null)
+        if (!hasLaunched && player != null)
         {
-            objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, targetPosition, speed * Time.deltaTime);
-
-            if (Vector3.Distance(objectToMove.transform.position, targetPosition) < 0.01f)
+            float distance = Vector3.Distance(player.transform.position, objectToMove.transform.position);
+            if (distance <= triggerDistance)
             {
-                targetPosition = targetPosition == pointA ? pointB : pointA;
+                LaunchObject();
             }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void LaunchObject()
     {
-        if (other.CompareTag("Player")) // Ensure the player has the "Player" tag
+        if (rb != null)
         {
-            isMoving = true;
+            rb.isKinematic = false;
+            rb.useGravity = true;
+
+            // Apply an upward force to simulate a launch
+            rb.linearVelocity = Vector3.up * launchForce;
+
+            if (bouncyMaterial != null)
+            {
+                Collider collider = objectToMove.GetComponent<Collider>();
+                if (collider != null)
+                {
+                    collider.material = bouncyMaterial;
+                }
+            }
+
+            hasLaunched = true;
         }
     }
 }

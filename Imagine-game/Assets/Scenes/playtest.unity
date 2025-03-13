@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 37476733}
   - component: {fileID: 37476732}
   - component: {fileID: 37476731}
+  - component: {fileID: 37476734}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -169,7 +170,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -226,6 +227,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37476729}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &37476734
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37476729}
+  m_Material: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5000002
+  m_Center: {x: -0.0000009536743, y: 0, z: 0}
 --- !u!1 &211815441
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +259,7 @@ GameObject:
   - component: {fileID: 211815444}
   - component: {fileID: 211815443}
   - component: {fileID: 211815442}
+  - component: {fileID: 211815445}
   m_Layer: 0
   m_Name: Bison/Cow thing (4)
   m_TagString: Untagged
@@ -257,9 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 211815441}
-  pointA: {x: 0, y: 3, z: 0}
-  pointB: {x: 0, y: 2, z: 0}
-  speed: 2
+  launchForce: 15
+  bouncyMaterial: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  triggerDistance: 10
 --- !u!135 &211815443
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -297,6 +320,33 @@ Transform:
   - {fileID: 37476730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -145.928, z: -23.269}
+--- !u!54 &211815445
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211815441}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &226065502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,6 +555,7 @@ GameObject:
   - component: {fileID: 332317405}
   - component: {fileID: 332317404}
   - component: {fileID: 332317403}
+  - component: {fileID: 332317406}
   m_Layer: 0
   m_Name: Bison/Cow thing (2)
   m_TagString: Untagged
@@ -525,9 +576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 332317402}
-  pointA: {x: 0, y: 3, z: 0}
-  pointB: {x: 0, y: 2, z: 0}
-  speed: 2
+  launchForce: 15
+  bouncyMaterial: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  triggerDistance: 10
 --- !u!135 &332317404
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -565,6 +616,33 @@ Transform:
   - {fileID: 1331835340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 18.923, y: -145.928, z: 0}
+--- !u!54 &332317406
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332317402}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +889,7 @@ GameObject:
   - component: {fileID: 528647619}
   - component: {fileID: 528647618}
   - component: {fileID: 528647617}
+  - component: {fileID: 528647620}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -850,7 +929,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -907,6 +986,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528647615}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &528647620
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528647615}
+  m_Material: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &569271905
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,11 +1091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 155957725642484726, guid: 9dd92365e5078f9469a9043159819a95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 155957725642484726, guid: 9dd92365e5078f9469a9043159819a95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 383
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 155957725642484726, guid: 9dd92365e5078f9469a9043159819a95, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1050,6 +1150,7 @@ GameObject:
   - component: {fileID: 630322678}
   - component: {fileID: 630322677}
   - component: {fileID: 630322676}
+  - component: {fileID: 630322679}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1089,7 +1190,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1146,6 +1247,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630322674}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &630322679
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630322674}
+  m_Material: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &708477988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1389,7 @@ GameObject:
   - component: {fileID: 742414909}
   - component: {fileID: 742414908}
   - component: {fileID: 742414907}
+  - component: {fileID: 742414910}
   m_Layer: 0
   m_Name: Bison/Cow thing (3)
   m_TagString: Untagged
@@ -1287,9 +1410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 742414906}
-  pointA: {x: 0, y: 3, z: 0}
-  pointB: {x: 0, y: 2, z: 0}
-  speed: 2
+  launchForce: 15
+  bouncyMaterial: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  triggerDistance: 10
 --- !u!135 &742414908
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1327,6 +1450,33 @@ Transform:
   - {fileID: 528647616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -145.928, z: 0}
+--- !u!54 &742414910
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742414906}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &774300751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2258,7 @@ GameObject:
   - component: {fileID: 1177551136}
   - component: {fileID: 1177551135}
   - component: {fileID: 1177551137}
+  - component: {fileID: 1177551138}
   m_Layer: 0
   m_Name: Bison/Cow thing
   m_TagString: Untagged
@@ -2165,9 +2316,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 1177551134}
-  pointA: {x: 0, y: 3, z: 0}
-  pointB: {x: 0, y: 2, z: 0}
-  speed: 2
+  launchForce: 15
+  bouncyMaterial: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  triggerDistance: 10
+--- !u!54 &1177551138
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177551134}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1306337603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,6 +2565,7 @@ GameObject:
   - component: {fileID: 1331835343}
   - component: {fileID: 1331835342}
   - component: {fileID: 1331835341}
+  - component: {fileID: 1331835344}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2426,7 +2605,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2483,6 +2662,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331835339}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1331835344
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331835339}
+  m_Material: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.50000006
+  m_Center: {x: 0, y: 0.00000047683716, z: 0}
 --- !u!1 &1359296459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +3020,7 @@ GameObject:
   - component: {fileID: 1641886618}
   - component: {fileID: 1641886617}
   - component: {fileID: 1641886616}
+  - component: {fileID: 1641886619}
   m_Layer: 0
   m_Name: Bison/Cow thing (1)
   m_TagString: Untagged
@@ -2840,9 +3041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 1641886615}
-  pointA: {x: 0, y: 3, z: 0}
-  pointB: {x: 0, y: 2, z: 0}
-  speed: 2
+  launchForce: 15
+  bouncyMaterial: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
+  triggerDistance: 10
 --- !u!135 &1641886617
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2880,6 +3081,33 @@ Transform:
   - {fileID: 1786379631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1641886619
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641886615}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1659838508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,6 +3450,7 @@ GameObject:
   - component: {fileID: 1786379634}
   - component: {fileID: 1786379633}
   - component: {fileID: 1786379632}
+  - component: {fileID: 1786379635}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -3251,7 +3480,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786379630}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9851bd192b6e633488d087ddc75871ea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3261,7 +3490,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3318,6 +3547,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786379630}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1786379635
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786379630}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1932008230
 GameObject:
   m_ObjectHideFlags: 0
