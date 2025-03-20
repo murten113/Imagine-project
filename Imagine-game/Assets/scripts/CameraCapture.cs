@@ -9,9 +9,11 @@ public class CameraCapture : MonoBehaviour
     public string screenshotFolder = "Screenshots";
     private int screenshotCount = 0;
 
+    private string folderPath;
+
     void Start()
     {
-        string folderPath = Path.Combine(Application.dataPath, "Resources", screenshotFolder);
+        folderPath = Path.Combine(Application.persistentDataPath, screenshotFolder);
 
         if (!Directory.Exists(folderPath))
         {
@@ -22,7 +24,6 @@ public class CameraCapture : MonoBehaviour
 
     void Update()
     {
-        // Check if right click is held down and left click is pressed
         if (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
         {
             TakePolaroidScreenshot();
@@ -31,11 +32,9 @@ public class CameraCapture : MonoBehaviour
 
     void TakePolaroidScreenshot()
     {
-        // Create a RenderTexture for capturing the screenshot
         RenderTexture renderTex = new RenderTexture(imageWidth, imageHeight, 24);
         camera.targetTexture = renderTex;
 
-        // Render the camera view
         Texture2D screenshot = new Texture2D(imageWidth, imageHeight, TextureFormat.RGB24, false);
         camera.Render();
         RenderTexture.active = renderTex;
@@ -44,11 +43,9 @@ public class CameraCapture : MonoBehaviour
         RenderTexture.active = null;
         Destroy(renderTex);
 
-        // Add a polaroid frame
         Texture2D polaroid = AddPolaroidFrame(screenshot);
 
-        // Save the screenshot
-        string filePath = Path.Combine(Application.dataPath, "Resources", screenshotFolder, $"screenshot_{screenshotCount}.png");
+        string filePath = Path.Combine(folderPath, $"screenshot_{screenshotCount}.png");
         File.WriteAllBytes(filePath, polaroid.EncodeToPNG());
         screenshotCount++;
 
@@ -60,11 +57,9 @@ public class CameraCapture : MonoBehaviour
         int frameWidth = original.width + 40;
         int frameHeight = original.height + 100;
 
-        // Create a new texture with a larger size for the frame
         Texture2D framedTexture = new Texture2D(frameWidth, frameHeight);
         Color white = Color.white;
 
-        // Fill the frame with white
         for (int x = 0; x < frameWidth; x++)
         {
             for (int y = 0; y < frameHeight; y++)
@@ -73,12 +68,11 @@ public class CameraCapture : MonoBehaviour
             }
         }
 
-        // Paste the original screenshot with an offset for the bottom margin
         for (int x = 0; x < original.width; x++)
         {
             for (int y = 0; y < original.height; y++)
             {
-                framedTexture.SetPixel(x + 20, y + 80, original.GetPixel(x, y)); // Bottom margin for polaroid look
+                framedTexture.SetPixel(x + 20, y + 80, original.GetPixel(x, y));
             }
         }
 
