@@ -8,14 +8,27 @@ public class CameraZoom : MonoBehaviour
 
     private Camera cam;
     public GameObject ui;
-
+    private Animator mAnimator;
     void Start()
     {
         cam = GetComponent<Camera>();
+        mAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (mAnimator != null)
+        {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                Debug.Log("zooming");
+                mAnimator.SetTrigger("isZooming");
+            }
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                mAnimator.SetTrigger("isUnzooming");
+            }
+        }
         if (Input.GetMouseButton(1)) // Right-click
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomFOV, Time.deltaTime * zoomSpeed);
