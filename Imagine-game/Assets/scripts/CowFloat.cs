@@ -11,6 +11,7 @@ public class CowFloat : MonoBehaviour
     private bool hasLaunched = false;
     private Rigidbody rb;
     private GameObject player;
+    public Animator cowAnimator;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class CowFloat : MonoBehaviour
     {
         if (rb != null)
         {
+            cowAnimator.SetTrigger("isPuffed");
             rb.isKinematic = false;
             rb.useGravity = true;
 
