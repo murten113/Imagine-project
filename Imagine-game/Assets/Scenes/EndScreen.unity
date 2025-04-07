@@ -925,7 +925,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photoBookUI: {fileID: 7723317959534542622}
-  photoSlots: []
+  photoSlots:
+  - {fileID: 741382712332014424}
+  - {fileID: 8655467385510790091}
+  - {fileID: 2791705182537798539}
+  - {fileID: 1988474227895305128}
   nextPageButton: {fileID: 3743041226085692716}
   prevPageButton: {fileID: 3329709390476337048}
   screenshotFolder: Screenshots
