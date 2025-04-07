@@ -4,20 +4,19 @@ using UnityEngine;
 public class TurtelHide : MonoBehaviour
 {
     public GameObject turtelActive;
-    public Animator turtleAnimator;
-    public Material prettyMaterial;
-    public Material rockyMaterial;
+    public GameObject turtelRock;
 
     private void Start()
     {
-        turtelActive.GetComponent<SkinnedMeshRenderer>().material = rockyMaterial;
+        turtelActive.SetActive(false);
+        turtelRock.SetActive(true);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            turtleAnimator.SetTrigger("isAwake");
-            turtelActive.GetComponent<SkinnedMeshRenderer>().material = prettyMaterial;
+            turtelActive.SetActive(true);
+            turtelRock.SetActive(false);
         }
         
     }
@@ -26,8 +25,8 @@ public class TurtelHide : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            turtleAnimator.SetTrigger("isAsleep");
-            turtelActive.GetComponent<SkinnedMeshRenderer>().material = rockyMaterial;
+            turtelActive.SetActive(false);
+            turtelRock.SetActive(true);
         }
 
     }
