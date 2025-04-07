@@ -27,6 +27,9 @@ public class EndBook : MonoBehaviour
         nextPageButton.onClick.AddListener(NextPage);
         prevPageButton.onClick.AddListener(PreviousPage);
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
 
