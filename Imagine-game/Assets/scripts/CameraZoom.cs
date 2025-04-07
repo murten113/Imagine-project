@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-    public float zoomFOV = 30f;  // FOV when zoomed in
-    public float normalFOV = 60f; // Default FOV
-    public float zoomSpeed = 10f; // Speed of zoom transition
+    public float zoomFOV = 30f;
+    public float normalFOV = 60f;
+    public float zoomSpeed = 10f;
 
     private Camera cam;
     public GameObject ui;
     private Animator mAnimator;
+
+    private int zoomFrameCounter = 0;
+    private bool uiActivated = false;
+    private const int delayFrames = 50;
+
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -19,9 +24,8 @@ public class CameraZoom : MonoBehaviour
     {
         if (mAnimator != null)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                Debug.Log("zooming");
                 mAnimator.SetTrigger("isZooming");
             }
             if (Input.GetKeyUp(KeyCode.Mouse1))
@@ -29,14 +33,27 @@ public class CameraZoom : MonoBehaviour
                 mAnimator.SetTrigger("isUnzooming");
             }
         }
-        if (Input.GetMouseButton(1)) // Right-click
+
+        if (Input.GetMouseButton(1)) // Right-click held
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomFOV, Time.deltaTime * zoomSpeed);
-            ui.SetActive(true);
+
+            if (zoomFrameCounter < delayFrames)
+            {
+                zoomFrameCounter++;
+            }
+
+            if (zoomFrameCounter >= delayFrames && !uiActivated)
+            {
+                ui.SetActive(true);
+                uiActivated = true;
+            }
         }
-        else
+        else // Right-click released
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, normalFOV, Time.deltaTime * zoomSpeed);
+            zoomFrameCounter = 0;
+            uiActivated = false;
             ui.SetActive(false);
         }
     }
