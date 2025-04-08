@@ -8,12 +8,14 @@ public class whalemovement : MonoBehaviour
     public float speed = 2.0f;
     public float rotationSpeed = 5.0f;
     public bool isMoving = false;
+    public Animator animator;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isMoving = true;
+            animator.SetTrigger("isActive");
         }
     }
 

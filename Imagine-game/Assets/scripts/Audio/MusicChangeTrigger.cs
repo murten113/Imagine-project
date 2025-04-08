@@ -7,7 +7,7 @@ public class MusicChangeTrigger : MonoBehaviour
     [Header("Area")]
     [SerializeField] private MusicArea area;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter(Collider collider)
     {
         if (collider.tag.Equals("Player"))
         {
